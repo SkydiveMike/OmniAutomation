@@ -13,6 +13,17 @@ provide compatibility with OmniFocus 4.
 ## Plug Ins
 
 The sections below describe Each of the Plug Ins in this collection.
+
+### Default Window Look
+
+Set the look of the fronmost window to my preferred default:
+- Full size (but not macOS Full Screen)
+- Sidebar and Inspector visible on macOS
+- Sidebar and Inspector hidden on iPhone small screen
+
+Note that the full size window does require the use of a Keyboard
+Maestro Macro, [included](./Keyboard-Maestro-Macros/Window-Maximize.xml).
+
 ## Installation
 
 `tl;dr`: Copy the contents of the `PlugIns/` directory from this

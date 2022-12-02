@@ -1,0 +1,53 @@
+/*{
+    "author": "Mike McLean",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.mclean.of.default-window-look",
+    "version": "1.0",
+    "description": "Set my preferred default window look on the frontmost window",
+    "label": "Default Window Look",
+    "mediumLabel": "Default Window Look",
+    "longLabel": "Default Window Look",
+    "paletteLabel": "Default Window Look",
+    "image" : "macwindow",
+}*/
+(() => {
+  var action = new PlugIn.Action(function (selection, sender) {
+    console.info("Default-Window-Look");
+
+    console.log("Invoked with selection", selection);
+    console.log("Invoked with sender", sender);
+
+    var currentDeviceType = Device.current.type;
+    if (currentDeviceType === DeviceType.iPhone) {
+      console.log("iPhone: Disabling inspector and sidebar.");
+      document.windows[0].inspectorVisible = false;
+      document.windows[0].sidebarVisible = false;
+    } else if (currentDeviceType === DeviceType.iPad) {
+      console.log("iPad: Showing inspector and sidebar.");
+      document.windows[0].inspectorVisible = true;
+      document.windows[0].sidebarVisible = true;
+    } else if (currentDeviceType === DeviceType.mac) {
+      console.log("Mac: Showing inspector and sidebar and maximizing window.");
+      // Only try to re-size the window on macOS (via Shortcuts)
+      console.log("This device is running macOS.");
+      // Maximize window via Keyboard Maestro
+      urlStr = "kmtrigger://macro=3FCC516B-0122-4F3F-835D-326E35FDF4B7";
+      URL.fromString(urlStr).open();
+
+      // Show the inspector and side bar
+      document.windows[0].inspectorVisible = true;
+      document.windows[0].sidebarVisible = true;
+
+      // Expand all
+      document.windows[0].content.rootNode.expand(true);
+    }
+  });
+
+  action.validate = function () {
+    // validation code
+    return true;
+  };
+
+  return action;
+})();
