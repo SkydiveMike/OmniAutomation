@@ -10,6 +10,9 @@ Initially, this repository will convert the suite of AppleScript-based
 OmniFocus scripts that I use daily to OmniAutomation (Javascript) and
 provide compatibility with OmniFocus 4.
 
+## Plug Ins
+
+The sections below describe Each of the Plug Ins in this collection.
 ## Installation
 
 `tl;dr`: Copy the contents of the `PlugIns/` directory from this
